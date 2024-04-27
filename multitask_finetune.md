@@ -113,5 +113,5 @@ Correspondingly, we need to define `loss_dict <loss_dict>` and `training/data_di
 ```
 Once we have finished setting up `input.json`, we are ready to train:
 ```bash
-dp --pt train input.json --finetune model_18heads.pt
+$ dp --pt train input.json --finetune model_18heads.pt
 ```
