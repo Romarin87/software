@@ -1,7 +1,7 @@
 ## Finetune from the pretrained multi-task model
 Now we have a multi-task model `model_18heads.pt` with 18 fitting heads, with different branches such as `Domains_Alloy`, `Domains_Anode`, `Domains_Cluster`, `Domains_Drug`, etc. 
 
-The content of `input.json` is different from single-task training. Includes a `model/shared_dict <model/shared_dict>`shared by all models,  such as `dpa2_descriptor`,and multiple model definitions `model/model_dict/model_key <model/model_dict/model_key>`instead of a single model definition `model <model>`.
+The content of `input.json` is different from single-task training. Includes a `model/shared_dict <model/shared_dict>`shared by all models, such as `dpa2_descriptor`, and multiple model definitions `model/model_dict/model_key <model/model_dict/model_key>`instead of a single model definition `model <model>`.
 
 For example, I want to run finetune on a new system while continuing to train on the relevant data set of the pretrain model such as `Domains_Alloy` to prevent overfitting. We can define model_dict as follows:
 ```json
@@ -84,7 +84,7 @@ Correspondingly, we need to define `loss_dict <loss_dict>` and `training/data_di
                         "/home/data/Domains/Alloy/val/10",
                         "/home/data/Domains/Alloy/val/11"
                     ],
-                    "batch_size": 1,
+                    "batch_size": "auto",
                     "_comment": "that's all"
                 }
             },
@@ -104,7 +104,7 @@ Correspondingly, we need to define `loss_dict <loss_dict>` and `training/data_di
                         "/home/data/new_system/val/10",
                         "/home/data/new_system/val/11"
                     ],
-                    "batch_size": 1,
+                    "batch_size": "auto",
                     "_comment": "that's all"
                 }
             },
